@@ -1,0 +1,70 @@
+ body {
+    background:#bfccbf;
+    font-family: 'Oswald',sans-serif;
+    overflow: auto ;
+ }
+ .index{
+     width: 100vw;
+     height: 100vh;
+     
+ }
+ .masterhead {
+     color: #3f3f3f;
+     min-height: auto;
+     width: 100%;
+     height: 100%;
+     padding-top: 8rem;
+    background: url('/img/fondomega.jpg');
+    background-position: center;
+    background-size: cover;
+    }
+.masterhead h1{
+    font: 4rem;
+    margin:0;
+    padding: 0;
+}
+@media (min-width:992px) {
+    .masterhead h1{
+        font-size:5.5rem;
+    }
+    
+}
+.table {
+    background-color: honeydew;
+    overflow:scroll;
+    
+}
+.contenedor {
+    width: 100%;
+}
+
+.select,
+#locale {
+  width: 100%;
+}
+.like {
+  margin-right: 10px;
+}
+
+.card{
+    opacity: 0.75;
+}
+
+.carousel .carousel-inner{
+    height:500px
+    }
+    .carousel-inner .carousel-item img{
+    min-height:100px;
+    max-height: 400px;
+    /* prevent it from stretch in screen size < than 768px*/
+    object-fit:contain
+    }
+    
+    @media(max-width:768px){
+    .carousel .carousel-inner{
+    /*prevent it from adding a white space between carousel and container elements*/
+    height:auto
+     }
+    }
+
+

@@ -1,0 +1,35 @@
+        
+
+        <div class="col-md-4 mx-auto p-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/citaprevia/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre_tienda" class="form-control" placeholder="Nombre" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefono" class="form-control" placeholder="telefono">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="direccion" rows="2" class="form-control" placeholder="Dirección"></textarea>
+                        </div>
+                        <div class="form-group" >
+                            
+                            <select name="OS" name="tipo_comercio" rows="2" class="form-control" placeholder="Panadería">
+                                {{#each tipocomercio}} 
+                                <option value="{{ID}}">{{Tipo_comercio}}</option> 
+                                {{/each}}
+                            </select>
+                            
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+       </div>
+   
