@@ -48,7 +48,7 @@ router.post('/',async (req,res)=>{
 })
 router.get('/', async (req, res) => {
     const datos = await pool.query('SELECT Id,Nombre,clasificacion.Descripcion,clasificacion.ID_clas,Municipio FROM `fichas` inner join clasificacion ON clasificacion.ID_clas=fichas.ID_clas ORDER BY Id ASC');//WHERE fecha BETWEEN value1 AND value2
-    console.log(datos); //mete por consola todos los datos de la tabla
+    //console.log(datos); //mete por consola todos los datos de la tabla
     //const datos_clasificacion = Object.assign(datos, clasificacion  );
     //const tipo= await pool.query('SELECT ID_clas,Descripcion FROM `clasificacion`');
     //console.log(tipo);
@@ -62,6 +62,7 @@ router.get('/delete/:ID', async (req, res) => {
     res.redirect('/table');
 
 })
+
 
 
 module.exports = router;

@@ -1,5 +1,8 @@
 <div class="container-fluid ml-0 " style="height: 100%;">
   <div class="row">
+
+    <!-- Side bar de busqueda antiguo
+
     <nav class="col bg-light sidebar float-left">
       <form action="" method="POST" class="">
         <div class="sidebar">
@@ -12,7 +15,7 @@
             <li class="nav-item m-1">
               <input type="text" name="busqueda" id="Nombre" class="form-control mr-sm-2 p-2" placeholder="Nombre">
             </li>
-            
+
             <li class="nav-item m-1">
               <select class="custom-select" name="tipo" id="Descripcion">
                 {{#each datos}}
@@ -26,21 +29,19 @@
           </ul>
         </div>
       </form>
-    </nav>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="container p-4 overflow-auto">
+    </nav>-->
+    <main role="main" class="px-4">
+      <div class="container p-4">
         <div class="row">
-          <!--<canvas class="my-4" id="myChart" width="900" height="380"></canvas>-->
-          <!--<div class="col md-4 mx-auto p-4">
-            <h2>Indice de megalitos</h2>
-          </div>-->
+          
           <div class="">
-            <table id="table" class="table table-striped table-bordered table-hover" >
+            <table id="myTable" class="table table-sm table-striped" style="p-4 width:0em">
               <thead>
                 <tr>
                   <th>Nombre</th>
                   <th>Tipo</th>
                   <th>Municipio</th>
+                  <th>Ficha</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,13 +62,14 @@
                 </div>
                 {{/each}}
               </tbody>
-              <!--<tfoot>
+              <tfoot>
                 <tr>
                   <td>Nombre</td>
                   <td>Tipo</td>
                   <td>Muncipio</td>
+                  <td>Ficha</td>
                 </tr>
-              </tfoot>-->
+              </tfoot>
             </table>
           </div>
 
