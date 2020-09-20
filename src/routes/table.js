@@ -3,9 +3,7 @@ const router = express.Router();
 const pool = require('../database'); //debería llamarlo db 
 const { isloggedin } = require('../lib/auth');
 
-router.get('/introducir', (req, res) => {
-    res.render('table/introducir');
-})
+
 router.get('/list', (req, res) => {
     res.render('table/list');
 })
@@ -19,24 +17,6 @@ router.get('/vista/:ID', async (req, res) => {
 
 })
 
-router.post('/introducir', async (req, res) => {
-    //const {selectorfecha1, selectorfecha2 }=req.body;
-    //const F1= {selectorfecha1}
-    //const F2={selectorfecha2}
-    //yo solo quiero introducir -- esta parte del código es para guardar datos en la BBDD
-    const { Fecha, Humedad, Temperatura } = req.body;
-    const newvalue = {
-        Fecha,
-        Humedad,
-        Temperatura
-    }
-    console.log(newvalue);
-    await pool.query('INSERT INTO thtable set ?', [newvalue])
-    res.redirect('/table');
-
-});
-
-
 router.post('/',async (req,res)=>{
     const {busqueda}=req.body;
     busqueda1='%'+busqueda+'%';
@@ -47,7 +27,7 @@ router.post('/',async (req,res)=>{
 
 })
 router.get('/', async (req, res) => {
-    const datos = await pool.query('SELECT Id,Nombre,clasificacion.Descripcion,clasificacion.ID_clas,Municipio FROM `fichas` inner join clasificacion ON clasificacion.ID_clas=fichas.ID_clas ORDER BY Id ASC');//WHERE fecha BETWEEN value1 AND value2
+    const datos = await pool.query('SELECT Id,Nombre,clasificacion.Descripcion,clasificacion.ID_clas,Municipio,Anexo_path_1,Anexo_path_2,Anexo_path_3,Anexo_path_4.Anexo_path_5,Anexo_path_6,Anexo_path_7,Anexo_path_8 FROM `fichas` inner join clasificacion ON clasificacion.ID_clas=fichas.ID_clas ORDER BY Id ASC');//WHERE fecha BETWEEN value1 AND value2
     //console.log(datos); //mete por consola todos los datos de la tabla
     //const datos_clasificacion = Object.assign(datos, clasificacion  );
     //const tipo= await pool.query('SELECT ID_clas,Descripcion FROM `clasificacion`');
@@ -56,12 +36,6 @@ router.get('/', async (req, res) => {
     
 })
 
-router.get('/delete/:ID', async (req, res) => {
-    const { ID } = req.params;
-    await pool.query('DELETE FROM thtable WHERE ID=?', [ID])
-    res.redirect('/table');
-
-})
 
 
 

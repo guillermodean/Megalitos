@@ -54,15 +54,16 @@
                     <p>UTM X: {{UTM_X}}</p>
                     <p>UTM Y: {{UTM_Y}}</p>
                     <p>Altura {{UTM_Z}} metros</p>
-                    <a href="https://www.google.es/maps/search/{{Coordenadas}}" class="btn btn-secondary" target="_blank" >Ubicación
+                    <a href="https://www.google.es/maps/search/{{Coordenadas}}" class="btn btn-secondary"
+                        target="_blank">Ubicación
                         mapa</a>
                 </div>
             </div>
-            <div class="card p-4 md-auto">
+            <!--<div class="card p-4 md-auto">
                 <div class="card-body text-center">
-
+                    <a href="table/vista/documents{{Id}}" class="btn btn-primary">Ver</a>
                 </div>
-            </div>
+            </div>-->
 
 
         </div>
@@ -71,14 +72,29 @@
     <div id="carousel" class="carousel slide l-4 r-4" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/img/141208_Megalitos/0001_DIB_1.page1.jpg" alt="First slide"
-                    href="/img/141208_Megalitos/0001_DIB_1.page1.jpg">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_1}}" alt="First slide"
+                    href="/img/141208_Megalitos/0362_DIB_390.jpg" target="_blank">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/img/141208_Megalitos/0001_DIB_1.page2.jpg" alt="Second slide">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_2}}" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/img/141208_Megalitos/0001_FOT_2.page1.jpg" alt="Third slide">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_3}}" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_4}}" alt="Forth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_5}}" alt="Fifth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_6}}" alt="more slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_7}}" alt="more slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_8}}" alt="yeah slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
