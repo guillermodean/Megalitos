@@ -1,35 +1,5 @@
 <div class="container-fluid ml-0 " style="height: 100%;">
   <div class="row">
-
-    <!-- Side bar de busqueda antiguo
-
-    <nav class="col bg-light sidebar float-left">
-      <form action="" method="POST" class="">
-        <div class="sidebar">
-          <ul class="nav flex-column">
-            <li>
-              <h6 class="m-2 text-center mx-auto">
-                Busqueda por Nombre
-              </h6>
-            </li>
-            <li class="nav-item m-1">
-              <input type="text" name="busqueda" id="Nombre" class="form-control mr-sm-2 p-2" placeholder="Nombre">
-            </li>
-
-            <li class="nav-item m-1">
-              <select class="custom-select" name="tipo" id="Descripcion">
-                {{#each datos}}
-                <option value="{{ID_class}}">{{Descrpicion}}</option>
-                {{/each}}
-              </select>
-            </li>
-            <li>
-              <input type="submit" value="Buscar" class="btn btn-outline-primary btn-block">
-            </li>
-          </ul>
-        </div>
-      </form>
-    </nav>-->
     <main role="main" class="px-4">
       <div class="container p-4">
         <div class="row">
@@ -48,10 +18,10 @@
                 {{#each datos}}
                 <tr>
                   <td>{{Nombre}}</td>
-                  <td>{{Descripcion}}</td>
+                  <td>{{Des_clas}}</td>
                   <td>{{Municipio}}</td>
                   <td>
-                    <a href="table/vista/{{Id}}" class="btn btn-primary">Ver</a>
+                    <a href="table/vista/{{Id}}" class="btn">Ver</a>
                   </td>
                 </tr>
                 {{else}}
@@ -77,3 +47,9 @@
       </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+      $('#myTable').DataTable();
+    });
+</script>

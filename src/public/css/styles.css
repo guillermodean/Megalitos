@@ -1,13 +1,24 @@
  body {
-    background:#bfccbf;
-    font-family: 'Oswald',sans-serif;
+    background:#e4e8eb;
+    font-family: 'Roboto',sans-serif;
     overflow: auto ;
  }
+ 
  .index{
      width: 100vw;
      height: 100vh;
      
  }
+ .btn{
+     background-color: #7d967d;
+     color:white;
+     border-color: #556655;
+ }
+ .btn:hover {
+    background-color: #556655; 
+    color: white;
+    border-color: #556655;
+  }
  .masterhead {
      color: #3f3f3f;
      min-height: auto;
@@ -34,6 +45,9 @@
     overflow:scroll;
     
 }
+table{
+    background-color: aliceblue;
+}
 .contenedor {
     width: 100%;
 }
@@ -50,20 +64,26 @@
     opacity: 0.75;
 }
 
+.card-body{
+    opacity: 1;
+    color: black;
+}
+
 .carousel .carousel-inner{
     height:500px
     }
     .carousel-inner .carousel-item img{
-    min-height:100px;
-    max-height: 400px;
-    /* prevent it from stretch in screen size < than 768px*/
-    object-fit:contain
+    background-color: #3f3f3f;
+    min-height:200px;
+    max-height: 500px;
+    /* prevent it from stretch in screen size < than 500*/
+    object-fit:contain;
     }
     
     @media(max-width:768px){
     .carousel .carousel-inner{
     /*prevent it from adding a white space between carousel and container elements*/
-    height:auto
+    height:auto;
      }
     }
 

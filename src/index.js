@@ -35,13 +35,7 @@ app.set('view engine', '.hbs');
 
 //middleware
 
-app.use(session({
-    secret: 'rabatanga',
-    resave: false,
-    saveUninitialized: false,
-    store: new MySQLStore(database)
 
-}));
 
 app.use(flash());
 
@@ -62,8 +56,6 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
 
-    app.locals.success = req.flash('success');
-    app.locals.success = req.flash('message');
     app.locals.user=req.user;
     next();
 
@@ -74,13 +66,9 @@ app.use((req, res, next) => {
 
 app.use(require('./routes/index.js'));
 
-app.use(require('./routes/authentication.js'));
-
 app.use('/table', require('./routes/table.js'));
 
-app.use('/users', require('./routes/user.js'));
-
-app.use('/citaprevia', require('./routes/citaprevia.js'));
+app.use('/information',require('./routes/information.js'));
 
 
 
@@ -89,10 +77,10 @@ app.use('/citaprevia', require('./routes/citaprevia.js'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-//stargint server
+//starting server
 app.listen(app.get('port'), () => {
     console.log('server funcionando en el puerto', app.get('port'));
 });
 
-//fullcalendar
+
 
