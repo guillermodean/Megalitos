@@ -18,12 +18,8 @@ require('./lib/passport');
 //settings
 
 
-//app.set('port', process.env.PORT || 3000) //defininos en port el valor 4000 para la aplicación
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-app.listen(port);
+app.set('port', process.env.PORT || 8000) //defininos en port el valor 4000 para la aplicación
+
 
 app.set('views', path.join(__dirname, 'views')); //definimos el path de views
 
@@ -83,9 +79,14 @@ app.use('/information',require('./routes/information.js'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //starting server
-app.listen(app.get('port'), () => {
-    console.log('server funcionando en el puerto', app.get('port'));
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+//app.listen(app.get('port'), () => {
+//    console.log('server funcionando en el puerto', app.get('port'));
+//});
 
 
 
