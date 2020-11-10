@@ -18,7 +18,12 @@ require('./lib/passport');
 //settings
 
 
-app.set('port', process.env.PORT || 3000) //defininos en port el valor 4000 para la aplicación
+//app.set('port', process.env.PORT || 3000) //defininos en port el valor 4000 para la aplicación
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
 app.set('views', path.join(__dirname, 'views')); //definimos el path de views
 
