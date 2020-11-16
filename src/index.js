@@ -20,7 +20,6 @@ require('./lib/passport');
 
 app.set('port', process.env.PORT || 8000) //defininos en port el valor 4000 para la aplicación
 
-
 app.set('views', path.join(__dirname, 'views')); //definimos el path de views
 
 app.engine('.hbs', exphbs({                  //definimos el motor de plantillas y sus paths para luego trabajar más facil con html.
