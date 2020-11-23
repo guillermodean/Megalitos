@@ -4,52 +4,53 @@
     <div class="row p-4">
         <div class="col float-left">
 
-            <div class="card t-1 b-4 l-4 r-4 md-auto">
+            <div class="card p-4 md-auto">
+                <div class="card-header">Descripción</div>
                 <div class="card-body">
-                    <h4>Descripción</h4>
                     <p>{{Descripcion}}</p>
                 </div>
             </div>
             <div class="p-1"></div>
             <div class="card p-4 md-auto">
+                <div class="card-header">Observaciones</div>
                 <div class="card-body">
-                    <h4>Observaciones</h4>
                     <p>{{Observaciones}}</p>
                 </div>
             </div>
             <div class="p-2"></div>
             <div class="card p-4 md-auto">
+                <div class="card-header">Municipio</div>
                 <div class="card-body">
-                    <h4>Municipio</h4>
                     <p>{{Municipio}}</p>
                 </div>
             </div>
             <div class="p-1"></div>
             <div class="card p-4 md-auto">
+                <div class="card-header">Ubicacion</div>
                 <div class="card-body">
-                    <h4>Ubicacion</h4>
                     <p>{{Ubicacion}}</p>
                 </div>
             </div>
         </div>
         <div class="col-sm-3  px-4">
             <div class="card p-4 md-auto">
+                <div class="card-header">Tipo yacimiento</div>
                 <div class="card-body text-center">
-                    <h4>Descripción yacimiento</h4>
+
                     <p>{{Des_clas}}</p>
                 </div>
             </div>
             <div class="p-1"></div>
             <div class="card p-4 md-auto">
+                <div class="card-header">Localizado por</div>
                 <div class="card-body text-center">
-                    <h4>Localizado por</h4>
                     <p>{{Localizado_autor}}</p>
                 </div>
             </div>
             <div class="p-1"></div>
             <div class="card p-4 md-auto">
+                <div class="card-header">Fecha de localización</div>
                 <div class="card-body text-center">
-                    <h4>Fecha de localización</h4>
                     <p>{{Localizado_fecha}}</p>
                 </div>
             </div>
@@ -60,8 +61,7 @@
                     <p>UTM Y: {{UTM_Y}}</p>
                     <p>Altura {{UTM_Z}} metros</p>
                     <a href="https://www.google.es/maps/search/{{Coordenadas}}" class="btn btn-secondary"
-                        target="_blank">Ubicación
-                        mapa</a>
+                        target="_blank">Ubicación mapa</a>
                 </div>
             </div>
         </div>
@@ -71,8 +71,8 @@
         <div class="carousel-inner">
             {{#if Anexo_path_1}}
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_1}}" alt="First slide" >
-                    <h1 href="/img/141208_Megalitos/{{Anexo_path_1}}" target="_blank">visualizar</h1>
+                <img class="d-block w-100" src="/img/141208_Megalitos/{{Anexo_path_1}}" alt="First slide">
+                <h1 href="/img/141208_Megalitos/{{Anexo_path_1}}" target="_blank">visualizar</h1>
             </div>
             {{else}}
             {{/if}}
@@ -119,7 +119,7 @@
             {{else}}
             {{/if}}
 
-            
+
         </div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

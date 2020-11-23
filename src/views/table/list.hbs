@@ -1,55 +1,62 @@
-<div class="container-fluid ml-0 " style="height: 100%;">
+<div class="container " style="height: 100%;">
   <div class="row">
     <main role="main" class="px-4">
       <div class="container p-4">
-        <div class="row">
-          
-          <div class="">
-            <table id="myTable" class="table table-sm table-striped" style="p-4 width:0em">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Tipo</th>
-                  <th>Municipio</th>
-                  <th>Ficha</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{#each datos}}
-                <tr>
-                  <td>{{Nombre}}</td>
-                  <td>{{Des_clas}}</td>
-                  <td>{{Municipio}}</td>
-                  <td>
-                    <a href="table/vista/{{Id}}" class="btn">Ver</a>
-                  </td>
-                </tr>
-                {{else}}
-                <div class="col-md-4 mx-auto">
-                  <div class="card card-body text-centered">
-                    <p>No hay datos</p>
-                  </div>
-                </div>
-                {{/each}}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Nombre</td>
-                  <td>Tipo</td>
-                  <td>Muncipio</td>
-                  <td>Ficha</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-        </div>
+        <table id="myTable" class=" table table-responsive table-striped"  >
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Municipio</th>
+              <th>Fecha localizado</th>
+              <th>Autor</th>
+              <th>Ficha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each datos}}
+            <tr>
+              <td>{{Nombre}}</td>
+              <td>{{Des_clas}}</td>
+              <td>{{Municipio}}</td>
+              <td>{{Localizado_fecha}}</td>
+              <td>{{Localizado_autor}}</td>
+              <td>
+                <a href="table/vista/{{Id}}" class="btn">Ver</a>
+              </td>
+            </tr>
+            {{else}}
+            <div class="col-md-4 mx-auto">
+              <div class="card card-body text-centered">
+                <p>No hay datos</p>
+              </div>
+            </div>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Nombre</td>
+              <td>Tipo</td>
+              <td>Muncipio</td>
+              <td>Fecha localizado</td>
+              <td>Autor</td>
+              <td>Ficha</td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
   </div>
 </div>
 
 <script>
   $(document).ready(function () {
-      $('#myTable').DataTable();
+    $('#myTable').DataTable({
+      "pageLength": 50,
+      "bInfo" : false,
+      "oLanguage": {
+      "sLengthMenu": "Muestra _MENU_ registros",
+      "sSearch":"Busqueda: _INPUT_"}
+      
     });
+  });
 </script>

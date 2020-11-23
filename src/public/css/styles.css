@@ -1,39 +1,91 @@
- body {
-    background:#e4e8eb;
+body {
+    background:#ffffff;
     font-family: 'Roboto',sans-serif;
     overflow: auto ;
- }
- 
+}
+.page-footer{
+    color:#3f3f3f;
+    background-color: #ffffff;
+    
+}
+a {
+    color: #28df99;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+    color: #99F3BD;
+    text-decoration: none;
+    background-color: transparent;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #28df99;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    color:#99f3bd
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color:#28df99;
+    border-color: #99f3bd;
+    
+}
+
+.custom-control-label::before, .custom-file-label, .custom-select {
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    
+}
  .index{
      width: 100vw;
      height: 100vh;
      
- }
- .btn{
-     background-color: #7d967d;
-     color:white;
-     border-color: #556655;
- }
- .btn:hover {
-    background-color: #556655; 
+}
+.btn{
+     background-color: #ffffff;
+     color: #3f3f3f;
+     border-color: #28df99;
+}
+.btn:hover {
+    background-color: #28df99; 
     color: white;
-    border-color: #556655;
-  }
- .masterhead {
+    border-color: #28df99;
+ }
+.masterhead {
      color: #3f3f3f;
      min-height: auto;
      width: 100%;
      height: 100%;
-     padding-top: 8rem;
-    background: url('/img/fondomega.jpg');
-    background-position: center;
-    background-size: cover;
+     padding-top: 0%;
+     background: url('/img/fondomega.jpg');
+     background-position: center;
+     background-size: cover;
     }
+
 .masterhead h1{
-    font: 4rem;
-    margin:0;
-    padding: 0;
-}
+     font: 4rem;
+     margin: 0;
+     padding: 0;
+     
+     opacity:0.75;
+
+    }
+.masterhead h3{
+     font: 4rem;
+     margin:0;
+     padding: 0;
+     
+     opacity: 0.75;
+    }
 @media (min-width:992px) {
     .masterhead h1{
         font-size:5.5rem;
@@ -41,13 +93,41 @@
     
 }
 .myTable {
-    background-color: rgb(99, 112, 99);
+    background-color: rgb(255, 255, 255);
     overflow:scroll;
+    color: #28df99;
+    border-collapse: collapse;
+ 
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color:#d2f6c5;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: #28df99;
+    color:#fff;
+    
+
+}
+.card-header{
+    font-size: 22px;
+    background-color: #99f3bd;
+}
+.card{
+    background-color: #F6F7D4;
+}
+tfoot {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: #28df99;
+    color:#fff;
+    
     
 }
-table{
-    background-color: aliceblue;
-}
+
 .contenedor {
     width: 100%;
 }
@@ -68,6 +148,54 @@ table{
     opacity: 1;
     color: black;
 }
+
+@media screen and (min-width: 601px) {
+    td{
+        font-size: 15px;
+      }
+    tfoot{
+        font-size: 15px;
+    }
+    thead{
+        font-size: 15px;
+    }
+    .btn{
+        font-size: 15px;
+    }
+}
+  
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+
+@media screen and (max-width: 600px) {
+    td{
+      font-size: 9px;
+      
+    }
+    tfoot{
+        font-size: 9px;
+        
+      }
+    thead{
+        font-size: 9px;
+        
+    }
+    .btn{
+        font-size: 9px;
+        
+    }
+    .p{
+        font-size: 9px;
+    }
+    .page-link {
+        font-size: 9px;
+    }
+    label{
+        font-size: 9px;
+    }
+   
+}
+
+
 
 .carousel .carousel-inner{
     height:500px
