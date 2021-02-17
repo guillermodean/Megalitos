@@ -13,7 +13,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "datatables.net": "^1.10.21",
+    "datatables.net": "^1.10.23",
     "datatables.net-bs4": "^1.10.21",
     "datatables.net-dt": "^1.10.21",
     "express": "^4.17.1",
