@@ -87,5 +87,6 @@ app.listen(port);
 //    console.log('server funcionando en el puerto', app.get('port'));
 //});
 
+module.exports=app;
 
 
