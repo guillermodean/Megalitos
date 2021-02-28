@@ -32,6 +32,7 @@ app.engine('.hbs', exphbs({                  //definimos el motor de plantillas 
 
 app.set('view engine', '.hbs');
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 //middleware
 
