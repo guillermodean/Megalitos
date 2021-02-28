@@ -1,5 +1,5 @@
 body {
-    background:#caddd6;
+    background:#f0fffa;
     font-family: 'Roboto',sans-serif;
     overflow: auto ;
 }
@@ -9,12 +9,12 @@ body {
     
 }
 a {
-    color: #28df99;
+    color: #82d6b6;
     text-decoration: none;
     background-color: transparent;
 }
 a:hover{
-    color: #99F3BD;
+    color:  #e2ffed;
     text-decoration: none;
     background-color: transparent;
 }
@@ -24,20 +24,20 @@ a:hover{
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #28df99;
+    color: #82d6b6;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
-    color:#99f3bd
+    color: #e2ffed
 }
 
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color:#28df99;
-    border-color: #99f3bd;
+    background-color:#82d6b6;
+    border-color: #e2ffed;
     
 }
 
@@ -53,12 +53,12 @@ a:hover{
 .btn{
      background-color: #ffffff;
      color: #3f3f3f;
-     border-color: #28df99;
+     border-color: #82d6b6;
 }
 .btn:hover {
-    background-color: #28df99; 
+    background-color: #82d6b6; 
     color: white;
-    border-color: #28df99;
+    border-color: #82d6b6;
  }
 .masterhead {
      color: #3f3f3f;
@@ -95,25 +95,25 @@ a:hover{
 .myTable {
     background-color: rgb(255, 255, 255);
     overflow:scroll;
-    color: #28df99;
+    color: #82d6b6;
     border-collapse: collapse;
  
 }
 table.table-striped tbody tr:nth-of-type(odd) {
-    background-color:#d2f6c5;
+    background-color:#ffffff;
 }
 thead {
     display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
-    background-color: #28df99;
+    background-color: hsl(157, 50%, 75%);
     color:#fff;
     
 
 }
 .card-header{
     font-size: 22px;
-    background-color: #99f3bd;
+    background-color:  #e2ffed;
 }
 .card{
     background-color: #F6F7D4;
@@ -122,7 +122,7 @@ tfoot {
     display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
-    background-color: #28df99;
+    background-color: #82d6b6;
     color:#fff;
     
     
