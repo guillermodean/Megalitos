@@ -116,7 +116,7 @@ thead {
     background-color:  #e2ffed;
 }
 .card{
-    background-color: #F6F7D4;
+    background-color: #f8f8ef;
 }
 tfoot {
     display: table-header-group;
@@ -141,7 +141,7 @@ tfoot {
 }
 
 .card{
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 .card-body{

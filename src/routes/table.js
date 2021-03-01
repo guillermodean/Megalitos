@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../database'); 
+const pool = require('../database');
 
 
 
@@ -12,8 +12,10 @@ router.get('/list', (req, res) => {
 router.get('/vista/:ID', async (req, res) => {
     const { ID } = req.params;
     const card = await pool.query('SELECT `Id`, `Nombre`,`Des_clas`, `Municipio`, `Ubicacion`, `Itinerario_texto`, `Itinerario`, `UTM_X`, `UTM_Y`, `UTM_Z`, `Coordenadas`, `Localizado_fecha`, `Localizado_autor`, `Descripcion`, `Excavacion`, `Observaciones`, `Características`, `Otros_aspectos`, `Anexo_path_1`, `Anexo_path_2`, `Anexo_path_3`, `Anexo_path_4`, `Anexo_path_5`, `Anexo_path_6`, `Anexo_path_7`, `Anexo_path_8` FROM fichas WHERE ID=?', [ID]);
-    res.render('table/vista', { card: card });
-
+    if (Object.keys(card).length) {
+        res.render('table/vista', { card: card });
+    }else
+        res.render('table/404', res.status(404));
 })
 
 router.post('/', async (req, res) => {
