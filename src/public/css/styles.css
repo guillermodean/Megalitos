@@ -216,7 +216,7 @@ tfoot {
     }
 
     #map-template {
-        height: 768px;
+        height:1080px;
         width: 100%;
         top: 5px;
         background: #333;
