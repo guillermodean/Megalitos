@@ -1,4 +1,3 @@
-const { data } = require("jquery");
 
 module.exports= {
 

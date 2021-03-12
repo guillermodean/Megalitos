@@ -1,0 +1,21 @@
+<div id="map-template">
+</div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="text/javascript">
+  var map = L.map('map-template').setView([42.6981973879293, -1.07367852843627], 9)
+  L.tileLayer("https://a.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+  var coordenadas = {{{ coordenadas }}}
+  console.log(coordenadas)
+  for (var i = 0; i < coordenadas.length; i++) {
+    const coord = (coordenadas[i].Coordenadas)
+    const name = (coordenadas[i].Nombre)
+    const Id = (coordenadas[i].Id)
+    if (coord) {
+      var longlat = coord.split(",")
+      marker = new L.marker([longlat[0], longlat[1]])
+      marker.bindPopup("<a href='/table/vista/"+Id+"'>"+name+"</a>")
+      marker.addTo(map)
+    }
+  }
+</script>

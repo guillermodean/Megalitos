@@ -215,4 +215,15 @@ tfoot {
      }
     }
 
+    #map-template {
+        height: 768px;
+        width: 100%;
+        top: 5px;
+        background: #333;
+        margin-left:auto;
+        margin-right: auto;
+
+
+    }
+
 

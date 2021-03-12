@@ -71,7 +71,7 @@ app.use('/table', require('./routes/table.js'));
 
 app.use('/information',require('./routes/information.js'));
 
-
+app.use('/maps',require('./routes/maps.js'));
 
 
 //Public
