@@ -37,11 +37,11 @@ Mysql
 
 ### Despliegue:
 
-####Preparada para ser lanzada en servidor HEROKU
+#### Preparada para ser lanzada en servidor HEROKU
 
 * Desplegada en https://megalitosnavarra.herokuapp.com/
 
-#####Preparada para desplegar con docker:
+##### Preparada para desplegar con docker:
 
 `docker pull megalitos-navarra`
 `docker run -d -p 3000:8000 megalitos-navarra`
