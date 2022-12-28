@@ -6,7 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const { database } = require('./keys');
-const passport = require('passport');
+// const passport = require('passport');
 //const Strategy = require('passport-local').Strategy;
 //const validator = require('express-validator');
 
@@ -22,7 +22,9 @@ app.set('port', process.env.PORT || 8000) //defininos en port el valor 4000 para
 
 app.set('views', path.join(__dirname, 'views')); //definimos el path de views
 
-app.engine('.hbs', exphbs({                  //definimos el motor de plantillas y sus paths para luego trabajar más facil con html.
+ //definimos el motor de plantillas y sus paths para luego trabajar más facil con html.
+
+app.engine('.hbs', exphbs.engine({                 
     defaultlayout: 'main.hbs',
     layoutsDir: path.join(app.get('views'), 'layout'),
     partialsDir: path.join(app.get('views'), 'partials'),
@@ -46,9 +48,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/table', express.json());
 
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
-app.use(passport.session());
+// app.use(passport.session());
 
 //app.use(validator());
 
