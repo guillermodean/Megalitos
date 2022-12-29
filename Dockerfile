@@ -1,6 +1,6 @@
 FROM node:12
 
-WORKDIR /Megalitos
+WORKDIR /usr/src/Megalitos
 
 COPY packaje*.json ./
 
@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
-CMD [ "npm", "start" ]
+EXPOSE 8000
+
+CMD [ "node", "src/index.js" ]
