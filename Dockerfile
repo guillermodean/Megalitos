@@ -1,8 +1,8 @@
-FROM node:12
+FROM node:14.15.4-alpine3.12
 
 WORKDIR /usr/src/Megalitos
 
-COPY packaje*.json ./
+COPY package*.json ./
 
 RUN npm install
 
