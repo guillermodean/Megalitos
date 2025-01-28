@@ -15,8 +15,10 @@ if (err) {
         console.error('database conection was refused')
     }
 }
-if (connection) connection.release();
-console.log('db is conected');
+if (connection) {
+    connection.release();
+    console.log('db is conected');}
+
 return;
 });
 //promisify pool querys lo que antes eran callbacks

@@ -2,10 +2,11 @@
 module.exports= {
 
  database: {
-    host:'u3y93bv513l7zv6o.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-    user: 'csff50g08papsj0z',
-    password: 'ya59s9n0iyv9wrbd',
-    database: 'tjtw081bf1rlbbxm'}
+    host:'database-1.cev9ngb4mxsp.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'Sf$wfb8ezQdvLia9',
+    database: 'megalitos',
+    connectTimeout: 60000}
 
  //database:{
  //   host:'localhost',

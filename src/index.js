@@ -87,7 +87,7 @@ if (port == null || port == "") {
 }
 app.listen(port);
 //app.listen(app.get('port'), () => {
-//    console.log('server funcionando en el puerto', app.get('port'));
+console.log('server funcionando en el puerto', app.get('port'));
 //});
 
 module.exports=app;
