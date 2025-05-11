@@ -14,6 +14,16 @@ module.exports= {
    user:'root',
    password:'kzdusxWyyWBsvSEYRSIDfaKKHlgHoUst',
    database: 'railway'},
-   ssl: { rejectUnauthorized: true }
+   ssl: { rejectUnauthorized: false }
 
 }
+
+//  database:{
+//    host:'mysql.guillermodean.com',
+//    port:80,
+//    user:'root',
+//    password:'kzdusxWyyWBsvSEYRSIDfaKKHlgHoUst',
+//    database: 'railway'},
+//    ssl: { rejectUnauthorized: true }
+
+// }
