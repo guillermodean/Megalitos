@@ -1,50 +1,56 @@
-<div class="container " style="height: 100%;">
+<div class="container py-5">
   <div class="row">
-    <main role="main" class="px-4">
-      <div class="container p-4">
-        <table id="myTable" class=" table table-responsive table-striped"  >
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Tipo</th>
-              <th>Municipio</th>
-              <th>Fecha localizado</th>
-              <th>Autor</th>
-              <th>Ficha</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each datos}}
-            <tr>
-              <td>{{Nombre}}</td>
-              <td>{{Des_clas}}</td>
-              <td>{{Municipio}}</td>
-              <td>{{Localizado_fecha}}</td>
-              <td>{{Localizado_autor}}</td>
-              <td>
-                <a href="table/vista/{{Id}}" class="btn">Ver</a>
-              </td>
-            </tr>
-            {{else}}
-            <div class="col-md-4 mx-auto">
-              <div class="card card-body text-centered">
-                <p>No hay Megalitos</p>
-              </div>
-            </div>
-            {{/each}}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Nombre</td>
-              <td>Tipo</td>
-              <td>Muncipio</td>
-              <td>Fecha localizado</td>
-              <td>Autor</td>
-              <td>Ficha</td>
-            </tr>
-          </tfoot>
-        </table>
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h3 class="card-title text-primary mb-0">Listado de Megalitos</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="myTable" class="table table-striped table-hover w-100">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Municipio</th>
+                  <th>Fecha localizado</th>
+                  <th>Autor</th>
+                  <th>Ficha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each datos}}
+                <tr>
+                  <td>{{Nombre}}</td>
+                  <td>{{Des_clas}}</td>
+                  <td>{{Municipio}}</td>
+                  <td>{{Localizado_fecha}}</td>
+                  <td>{{Localizado_autor}}</td>
+                  <td>
+                    <a href="table/vista/{{Id}}" class="btn btn-sm btn-outline-primary">
+                      <i class="fas fa-eye"></i> Ver
+                    </a>
+                  </td>
+                </tr>
+                {{else}}
+                 {{! This block is often handled by datatables empty state, but keeping for fallback }}
+                {{/each}}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Muncipio</th>
+                  <th>Fecha localizado</th>
+                  <th>Autor</th>
+                  <th>Ficha</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
@@ -52,11 +58,21 @@
   $(document).ready(function () {
     $('#myTable').DataTable({
       "pageLength": 50,
-      "bInfo" : false,
-      "oLanguage": {
-      "sLengthMenu": "Muestra _MENU_ registros",
-      "sSearch":"Busqueda: _INPUT_"}
-      
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast": "Último",
+          "sNext": "Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "sProcessing": "Procesando..."
+      }
     });
   });
 </script>

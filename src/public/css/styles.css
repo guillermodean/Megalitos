@@ -1,229 +1,140 @@
+:root {
+    --primary-color: #2c5e50; /* Deep Green */
+    --secondary-color: #82d6b6; /* Soft Green */
+    --accent-color: #e67e22; /* Earthy Orange for highlights */
+    --bg-color: #f8f9fa;
+    --text-color: #343a40;
+    --card-bg: #ffffff;
+}
+
 body {
-    background:#f0fffa;
-    font-family: 'Roboto',sans-serif;
-    overflow: auto ;
+    background-color: var(--bg-color);
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
 }
-.page-footer{
-    color:#3f3f3f;
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color) !important;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.8) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+}
+
+/* Footer */
+.page-footer {
     background-color: #ffffff;
-    
-}
-a {
-    color: #82d6b6;
-    text-decoration: none;
-    background-color: transparent;
-}
-a:hover{
-    color:  #e2ffed;
-    text-decoration: none;
-    background-color: transparent;
-}
-.page-link {
-    position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #82d6b6;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
+    border-top: 1px solid #eaeaea;
 }
 
-.page-link:hover {
-    color: #e2ffed
-}
-
-.page-item.active .page-link {
-    z-index: 3;
-    color: #fff;
-    background-color:#82d6b6;
-    border-color: #e2ffed;
-    
-}
-
-.custom-control-label::before, .custom-file-label, .custom-select {
-    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    
-}
- .index{
-     width: 100vw;
-     height: 100vh;
-     
-}
-.btn{
-     background-color: #ffffff;
-     color: #3f3f3f;
-     border-color: #82d6b6;
-}
-.btn:hover {
-    background-color: #82d6b6; 
-    color: white;
-    border-color: #82d6b6;
- }
+/* Masterhead */
 .masterhead {
-     color: #3f3f3f;
-     min-height:min-content;
-     width: 100%;
-     height: 100%;
-     padding-top: 1%;
-     background: url('/img/fondomega_1.jpg');
-     background-position: center;
-     background-size: cover;
-    }
-
-.masterhead h1{
-     font: 4rem;
-     margin: 0;
-     padding: 0;
-     
-     opacity:0.75;
-
-    }
-.masterhead h3{
-     font: 4rem;
-     margin:0;
-     padding: 0;
-     
-     opacity: 0.75;
-    }
-@media (min-width:992px) {
-    .masterhead h1{
-        font-size:5.5rem;
-    }
-    
-}
-.myTable {
-    background-color: rgb(255, 255, 255);
-    overflow:scroll;
-    color: #82d6b6;
-    border-collapse: collapse;
- 
-}
-table.table-striped tbody tr:nth-of-type(odd) {
-    background-color:#ffffff;
-}
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-    background-color: hsl(157, 50%, 75%);
-    color:#fff;
-    
-
-}
-.card-header{
-    font-size: 22px;
-    background-color:  #e2ffed;
-}
-.card{
-    background-color: #f8f8ef;
-}
-tfoot {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-    background-color: #82d6b6;
-    color:#fff;
-    
-    
-}
-
-.contenedor {
+    position: relative;
     width: 100%;
+    min-height: 80vh; /* Better for hero section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/img/fondomega_1.jpg') no-repeat center center/cover;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
-.select,
-#locale {
-  width: 100%;
-}
-.like {
-  margin-right: 10px;
-}
-
-.card{
-    opacity: 0.85;
+.masterhead::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
 }
 
-.card-body{
-    opacity: 1;
-    color: black;
+.masterhead .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
-@media screen and (min-width: 601px) {
-    td{
-        font-size: 15px;
-      }
-    tfoot{
-        font-size: 15px;
-    }
-    thead{
-        font-size: 15px;
-    }
-    .btn{
-        font-size: 15px;
-    }
-}
-  
-/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-
-@media screen and (max-width: 600px) {
-    td{
-      font-size: 9px;
-      
-    }
-    tfoot{
-        font-size: 9px;
-        
-      }
-    thead{
-        font-size: 9px;
-        
-    }
-    .btn{
-        font-size: 9px;
-        
-    }
-    .p{
-        font-size: 9px;
-    }
-    .page-link {
-        font-size: 9px;
-    }
-    label{
-        font-size: 9px;
-    }
-   
+.masterhead h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
 }
 
+.masterhead h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
 
-.carousel .carousel-inner{
-    height:500px
-    }
-    .carousel-inner .carousel-item img{
-    background-color: #3f3f3f;
-    min-height:200px;
-    max-height: 500px;
-    /* prevent it from stretch in screen size < than 500*/
-    object-fit:contain;
-    }
-    
-    @media(max-width:768px){
-    .carousel .carousel-inner{
-    /*prevent it from adding a white space between carousel and container elements*/
-    height:auto;
-     }
-    }
+.btn-primary:hover {
+    background-color: #1a3c32;
+    border-color: #1a3c32;
+}
 
-    #map-template {
-        height:1080px;
-        width: 100%;
-        top: 5px;
-        background: #333;
-        margin-left:auto;
-        margin-right: auto;
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background-color: var(--card-bg);
+    transition: transform 0.2s;
+}
 
+.card:hover {
+    transform: translateY(-2px);
+}
 
-    }
+.card-header {
+    background-color: rgba(130, 214, 182, 0.2);
+    border-bottom: none;
+    font-weight: 600;
+    color: var(--primary-color);
+}
 
+/* Tables */
+.table thead th {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Map */
+#map-template {
+    height: 80vh;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Typography Utilities */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1a3c32;
+    text-decoration: underline;
+}
