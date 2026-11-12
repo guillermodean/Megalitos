@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+<article class="wrap ficha ruta" data-ruta="{{r.id}}">
+  <nav class="crumbs" aria-label="Migas de pan">
+    <a href="/rutas">Rutas</a> <span aria-hidden="true">/</span> <span>{{#if r.ref}}{{r.ref}}{{else}}{{r.id}}{{/if}}</span>
+  </nav>
+
+  <header class="ficha__head ruta__head">
+    <div class="ruta__plate">{{> placa ref=r.ref red=r.red big=true}}</div>
+    <h1 class="display display--m">{{#if r.nombre}}{{r.nombre}}{{else}}Ruta sin nombre{{/if}}</h1>
+    <p class="ficha__sub">
+      <span class="chip">{{r.redNombre}}</span>
+      <span class="mono">{{r.longitudKm}} km</span>
+      <span class="mono">{{r.nMegalitos}} megalito{{#unless (eq r.nMegalitos 1)}}s{{/unless}} a menos de 500 m</span>
+    </p>
+  </header>
+
+  <figure class="ruta__mapfig">
+    <div id="rutamap" class="ruta__map" data-geojson="/api/rutas/{{r.id}}.geojson" data-red="{{r.red}}" role="application" aria-label="Mapa del trazado de la ruta">
+      <noscript><p class="mapa__noscript">El mapa necesita JavaScript. Puedes descargar el trazado en GPX.</p></noscript>
+    </div>
+    <figcaption class="ruta__cap mono">Trazado simplificado de OpenStreetMap · los puntos son megalitos a menos de 1 km<span class="ruta__status" id="rutamap-status" hidden></span></figcaption>
+  </figure>
+
+  <div class="ficha__grid">
+    <div class="ficha__text">
+      <section class="fsec">
+        {{> section-label n="" t="Megalitos junto a la ruta"}}
+        {{#if megalitos.length}}
+        <ol class="plain mlist">
+          {{#each megalitos}}
+          <li class="mlist__i" data-megalito="{{id}}" data-lat="{{lat}}" data-lon="{{lon}}" data-nombre="{{nombre}}" data-tipo="{{tipologia}}" data-municipio="{{municipio}}" data-altitud="{{altitud}}">
+            <span class="mlist__no mono">Nº {{pad4 id}}</span>
+            <a class="mlist__name" href="/megalitos/{{id}}">{{nombre}}</a>
+            <span class="mlist__meta">{{#if tipologia}}{{tipologia}}{{/if}}{{#if municipio}} · {{municipio}}{{/if}}</span>
+            <span class="mlist__d mono">{{fmtNum distM}} m</span>
+          </li>
+          {{/each}}
+        </ol>
+        <p class="mut mlist__note">Distancia mínima del megalito al trazado, en línea recta.</p>
+        {{else}}
+        <p class="mut">Ningún megalito del inventario a menos de 1 km de esta ruta.</p>
+        {{/if}}
+      </section>
+
+      <section class="fsec">
+        {{> section-label n="" t="Antes de salir"}}
+        <p class="notice">Trazado orientativo procedente de OpenStreetMap; comprueba el estado del camino y las condiciones de montaña antes de salir.</p>
+      </section>
+    </div>
+
+    <aside class="ficha__side" aria-label="Datos de la ruta">
+      <div class="sheet">
+        <h2 class="sheet__t">Datos de la ruta</h2>
+        <dl class="kv">
+          {{#if r.ref}}<div><dt>Señal</dt><dd>{{r.ref}}</dd></div>{{/if}}
+          <div><dt>Red</dt><dd>{{r.redNombre}}</dd></div>
+          <div><dt>Longitud</dt><dd>{{r.longitudKm}} km</dd></div>
+          {{#if r.desde}}<div><dt>Desde</dt><dd>{{r.desde}}</dd></div>{{/if}}
+          {{#if r.hasta}}<div><dt>Hasta</dt><dd>{{r.hasta}}</dd></div>{{/if}}
+          {{#if r.operador}}<div><dt>Operador</dt><dd>{{r.operador}}</dd></div>{{/if}}
+          <div><dt>Megalitos</dt><dd>{{r.nMegalitos}} a ≤ 500 m</dd></div>
+        </dl>
+        <div class="ruta__btns">
+          <a class="btn btn--acc" href="{{gpxUrl}}" download>Descargar GPX</a>
+          <a class="btn" href="{{osmUrl}}" rel="noopener" target="_blank">OpenStreetMap <span class="arr arr--ne" aria-hidden="true"></span></a>
+          <a class="btn" href="{{waymarkedUrl}}" rel="noopener" target="_blank">Waymarked Trails <span class="arr arr--ne" aria-hidden="true"></span></a>
+          {{#if r.web}}<a class="btn btn--ghost" href="{{r.web}}" rel="noopener" target="_blank">Web oficial <span class="arr arr--ne" aria-hidden="true"></span></a>{{/if}}
+        </div>
+        <p class="print-only mono">{{osmUrl}}</p>
+      </div>
+      <p class="attrib">Trazado © colaboradores de <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, licencia <a href="https://opendatacommons.org/licenses/odbl/1-0/" rel="noopener">ODbL</a>. Extracto del {{#if meta.actualizado}}{{meta.actualizado}}{{else}}{{r.actualizado}}{{/if}}.</p>
+    </aside>
+  </div>
+</article>
+<script src="/vendor/leaflet/leaflet.js"></script>
+<script src="/js/map.js?v={{@root.assetV}}"></script>

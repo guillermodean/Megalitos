@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+<section class="mapa">
+  <div class="mapa__bar wrap">
+    <h1 class="mapa__title">Mapa de megalitos</h1>
+    <p class="mapa__count mono" id="mapa-count" aria-live="polite"></p>
+    <fieldset class="mapa__legend" id="mapa-legend">
+      <legend class="visually-hidden">Filtrar por tipología</legend>
+    </fieldset>
+    <div class="mapa__rutas">
+      <label class="mapa__toggle"><input type="checkbox" id="mapa-rutas"><span class="mapa__switch" aria-hidden="true"></span> Rutas de senderismo</label>
+      <span class="mapa__rutas-status mono" id="mapa-rutas-status" aria-live="polite" hidden></span>
+      <span class="rkey" id="mapa-rutas-key" hidden aria-label="Colores de las rutas según su red">
+        <span class="rkey__i rkey__i--nwn">GR</span><span class="rkey__i rkey__i--rwn">Regional</span><span class="rkey__i rkey__i--lwn">Local</span><span class="rkey__i rkey__i--none">Otras</span>
+      </span>
+    </div>
+  </div>
+  <div id="map" class="mapa__map" data-geojson="/api/megalitos.geojson" data-rutas="/api/rutas.geojson" role="application" aria-label="Mapa interactivo de megalitos de Navarra">
+    <noscript><p class="mapa__noscript">El mapa necesita JavaScript. Puedes consultar el <a href="/megalitos">catálogo</a> sin él.</p></noscript>
+  </div>
+</section>
+<script src="/vendor/leaflet/leaflet.js"></script>
+<script src="/js/map.js?v={{@root.assetV}}"></script>

@@ -1,0 +1,6 @@
+# allowlist: ignore everything, then re-include what the image needs
+*
+!package.json
+!package-lock.json
+!src
+!src/**

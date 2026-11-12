@@ -1,0 +1,60 @@
+<section class="wrap section list rutas">
+  <header class="list__head">
+    <p class="label">Rutas de senderismo</p>
+    <h1 class="display display--m">Rutas señalizadas</h1>
+    <p class="lede">Los senderos de gran y pequeño recorrido de Navarra que pasan junto a los megalitos del inventario, con el trazado para descargar en GPX.</p>
+  </header>
+
+  <form class="filters filters--rutas" method="get" action="/rutas" role="search" id="filters">
+    <div class="field field--q">
+      <label for="f-q">Buscar</label>
+      <input id="f-q" name="q" type="search" value="{{q}}" maxlength="100" placeholder="GR 11, Aralar, Ulzama…" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="f-red">Red</label>
+      <select id="f-red" name="red">
+        <option value="">Todas</option>
+        {{#each redes}}<option value="{{value}}"{{#if selected}} selected{{/if}}>{{nombre}}</option>{{/each}}
+      </select>
+    </div>
+    <div class="field field--go">
+      <button class="btn btn--acc" type="submit">Filtrar</button>
+      <a class="btn btn--ghost" href="/rutas">Limpiar</a>
+    </div>
+  </form>
+
+  {{#if items.length}}
+  <p class="list__count" aria-live="polite"><span id="list-count" data-total="{{total}}">{{fmtNum total}}</span> ruta{{#unless (eq total 1)}}s{{/unless}}{{#if q}} · «{{q}}»{{/if}}</p>
+  <div class="tablewrap">
+    <table class="cat cat--rutas" id="cat">
+      <thead>
+        <tr><th scope="col" class="r-ref">Señal</th><th scope="col">Nombre</th><th scope="col" class="r-red">Red</th><th scope="col" class="r-km">Longitud</th><th scope="col" class="r-n">Megalitos</th></tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td class="r-ref">{{> placa}}</td>
+          <th scope="row" class="r-name"><a href="/rutas/{{id}}">{{#if nombre}}{{nombre}}{{else}}Sin nombre{{/if}}</a></th>
+          <td class="r-red">{{redNombre}}</td>
+          <td class="r-km mono">{{longitudKm}} km</td>
+          <td class="r-n mono"><b>{{nMegalitos}}</b> <span class="r-n__t">megalito{{#unless (eq nMegalitos 1)}}s{{/unless}}</span></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <p class="list__empty" id="list-empty" hidden>Ninguna ruta coincide con la búsqueda.</p>
+  {{else}}
+    {{#if disponible}}
+    <p class="list__count"><span>0</span> rutas{{#if q}} · «{{q}}»{{/if}}</p>
+    <p class="list__empty">Ninguna ruta coincide con la búsqueda. <a href="/rutas">Ver todas</a>.</p>
+    {{else}}
+    <div class="empty-sheet">
+      <p class="empty-sheet__t">Rutas aún no disponibles</p>
+      <p class="mut">Todavía no se ha cargado el trazado de los senderos. Mientras tanto puedes explorar los megalitos en el <a href="/mapa">mapa</a> o en el <a href="/megalitos">catálogo</a>.</p>
+    </div>
+    {{/if}}
+  {{/if}}
+
+  <p class="attrib">Trazados © colaboradores de <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, licencia <a href="https://opendatacommons.org/licenses/odbl/1-0/" rel="noopener">ODbL</a>.{{#if meta.actualizado}} Extracto del {{meta.actualizado}}.{{/if}} Los símbolos son ilustrativos y no reproducen las señales oficiales.</p>
+</section>

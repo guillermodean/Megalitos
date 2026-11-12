@@ -1,0 +1,12 @@
+<div class="anexos__group" data-kind="{{kind}}">
+  <h3 class="anexos__title">{{titulo}} <span class="mut">({{items.length}})</span></h3>
+  <ul class="thumbs thumbs--{{kind}}">
+    {{#each items}}
+    <li>
+      <a class="thumb" href="{{src}}" data-lightbox="{{../kind}}" data-alt="{{alt}}">
+        <img src="{{thumb}}" data-fallback="{{src}}" alt="{{alt}}" loading="lazy">
+      </a>
+    </li>
+    {{/each}}
+  </ul>
+</div>

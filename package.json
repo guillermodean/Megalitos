@@ -1,46 +1,25 @@
 {
-  "name": "Megalitos",
+  "name": "megalitos-navarra",
   "version": "2.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha test/api.test.js --exit",
-    "dev": "nodemon src",
-    "start": "node src/index.js"
+  "private": true,
+  "description": "Catalogo de megalitos de Navarra",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test \"test/*.test.js\""
+  },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "chai": "^4.3.0",
-    "connect-flash": "^0.1.1",
-    "datatables.net": "^1.11.3",
-    "datatables.net-bs4": "^1.11.3",
-    "datatables.net-dt": "^1.11.3",
-    "express": "^4.21.2",
-    "express-handlebars": "^6.0.6",
-    "express-mysql-session": "^2.1.6",
-    "express-session": "^1.18.1",
-    "express-validator": "^6.14.2",
-    "handlebars": "^4.7.7",
-    "ini": "^2.0.0",
-    "jquery": "^3.5.1",
-    "jsdom": "^16.7.0",
-    "lodash": "^4.17.21",
-    "mocha": "^10.2.0",
-    "morgan": "^1.10.0",
-    "mysql2": "^3.14.1",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "pg": "^8.5.1",
-    "socket.io": "^4.8.1",
-    "supertest": "^6.3.3",
-    "timeago.js": "^4.0.2",
-    "underscore": "^1.13.1",
-    "ws": "^7.4.6"
+    "express": "5.3.0",
+    "express-handlebars": "9.0.4",
+    "express-rate-limit": "8.7.4",
+    "handlebars": "4.7.10",
+    "helmet": "8.3.0",
+    "mysql2": "3.24.6"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
-  },
-  "description": ""
+    "supertest": "7.3.2"
+  }
 }

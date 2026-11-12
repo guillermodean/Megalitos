@@ -1,0 +1,12 @@
+# Local dev override:  docker compose -f compose.yml -f compose.dev.yml up --build
+# Serves on http://localhost:8096 and mounts the legacy images folder.
+services:
+  megalitos:
+    ports: !override
+      - "8096:8000"
+    environment:
+      TRUST_PROXY: "0"
+      NODE_ENV: development
+    volumes:
+      - ../Megalitos/src/public/img/141208_Megalitos:/data/anexos:ro
+      - ./data/thumbs:/data/thumbs:ro

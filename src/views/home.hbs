@@ -1,0 +1,51 @@
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__main">
+      <p class="label">Inventario · SCN Gorosti</p>
+      <h1 class="display">Megalitos<br>de Navarra</h1>
+      <p class="lede">Recopilación de yacimientos megalíticos de Navarra: dólmenes, crómlech, túmulos y menhires, tal como los dejó anotados Miguel Ezkurdia.</p>
+      <p class="hero__cta">
+        <a class="btn btn--acc" href="/megalitos">Abrir el catálogo <span class="arr" aria-hidden="true"></span></a>
+        <a class="btn" href="/mapa">Ver el mapa</a>
+      </p>
+    </div>
+    <dl class="stats" aria-label="Cifras del inventario">
+      <div><dt>Fichas</dt><dd>{{fmtNum stats.total}}</dd></div>
+      <div><dt>Con coordenadas</dt><dd>{{fmtNum stats.conCoordenadas}}</dd></div>
+      <div><dt>Imágenes</dt><dd>{{fmtNum stats.totalImagenes}}</dd></div>
+      <div><dt>Tipologías</dt><dd>{{stats.tipologias.length}}</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="wrap section">
+  {{> section-label n="01" t="Procedencia"}}
+  <div class="prose prose--cols">
+    <p>Recuperamos aquí, en formato digital y después de muchos años, el legado que Miguel Ezkurdia donó a la Sociedad de Ciencias Naturales Gorosti Natur Zientzi Elkartea. Era nuestro deber como depositarios del mismo el hacer este esfuerzo y que su trabajo de tantos años quede, al menos en la medida de lo posible, disponible para las generaciones actuales y las venideras.</p>
+    <p>Queremos agradecer, particularmente, el esfuerzo de muchos socios de Gorosti para conservar este legado y facilitar su digitalización y especialmente a Guillermo Deán que finalmente ha creado esta plataforma web.</p>
+  </div>
+  <p class="more"><a href="/miguel-ezkurdia">Quién fue Miguel Ezkurdia <span class="arr" aria-hidden="true"></span></a></p>
+</section>
+
+<section class="wrap section">
+  {{> section-label n="02" t="Tipologías"}}
+  <ul class="typology">
+    {{#each stats.tipologias}}
+    <li>
+      <a href="/megalitos?tipo={{slug}}">
+        <span class="typology__name">{{nombre}}</span>
+        <progress class="typology__bar" value="{{count}}" max="{{@root.stats.total}}" aria-hidden="true"></progress>
+        <span class="typology__n">{{fmtNum count}}</span>
+      </a>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+
+<section class="wrap section">
+  {{> section-label n="03" t="Seis fichas al azar"}}
+  <div class="cards">
+    {{#each destacados}}{{> card}}{{/each}}
+  </div>
+  <p class="more"><a href="/megalitos">Todo el catálogo ({{fmtNum stats.total}} fichas) <span class="arr" aria-hidden="true"></span></a></p>
+</section>

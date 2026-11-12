@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+<article class="wrap ficha" data-ficha="{{m.id}}">
+  <nav class="crumbs" aria-label="Migas de pan">
+    <a href="/megalitos">Catálogo</a> <span aria-hidden="true">/</span> <span>Nº {{pad4 m.id}}</span>
+  </nav>
+
+  <header class="ficha__head">
+    <p class="ficha__no">Nº {{pad4 m.id}}</p>
+    <h1 class="display display--m">{{m.nombre}}</h1>
+    <p class="ficha__sub">
+      {{#if m.tipologia}}<span class="chip">{{m.tipologia}}</span>{{/if}}
+      {{#if m.municipio}}<span class="ficha__muni">{{m.municipio}}</span>{{/if}}
+    </p>
+  </header>
+
+  <div class="ficha__grid">
+    <div class="ficha__text">
+      {{#if m.ubicacion}}
+      <section class="fsec">
+        {{> section-label n="" t="Ubicación"}}
+        <div class="prose">{{nl2p m.ubicacion}}</div>
+      </section>
+      {{/if}}
+      {{#if m.itinerarioTexto}}
+      <section class="fsec">
+        {{> section-label n="" t="Itinerario"}}
+        <div class="prose">{{nl2p m.itinerarioTexto}}</div>
+      </section>
+      {{/if}}
+      {{#if m.descripcion}}
+      <section class="fsec">
+        {{> section-label n="" t="Descripción"}}
+        <div class="prose">{{nl2p m.descripcion}}</div>
+      </section>
+      {{/if}}
+      {{#if m.excavacion}}
+      <section class="fsec">
+        {{> section-label n="" t="Excavación"}}
+        <div class="prose">{{nl2p m.excavacion}}</div>
+      </section>
+      {{/if}}
+      {{#if m.observaciones}}
+      <section class="fsec">
+        {{> section-label n="" t="Observaciones"}}
+        <div class="prose">{{nl2p m.observaciones}}</div>
+      </section>
+      {{/if}}
+      {{#if m.caracteristicas}}
+      <section class="fsec">
+        {{> section-label n="" t="Características"}}
+        <div class="prose">{{nl2p m.caracteristicas}}</div>
+      </section>
+      {{/if}}
+      {{#if rutas.length}}
+      <section class="fsec" id="rutas-cercanas">
+        {{> section-label n="" t="Rutas cercanas"}}
+        <ul class="plain rlist">
+          {{#each rutas}}
+          <li class="rlist__i" data-ruta-id="{{id}}" data-ruta-red="{{red}}">
+            {{> placa}}
+            <a class="rlist__name" href="/rutas/{{id}}">{{#if nombre}}{{nombre}}{{else}}Ruta sin nombre{{/if}}</a>
+            <span class="rlist__d mono">a {{fmtNum distM}} m</span>
+            <span class="rlist__km mono">{{longitudKm}} km</span>
+          </li>
+          {{/each}}
+        </ul>
+        <p class="mut rlist__note">Rutas señalizadas de OpenStreetMap a menos de 1,5 km. Las tres primeras se dibujan en el mapa de situación.{{#if acceso}} {{> acceso-senda}}{{/if}}</p>
+      </section>
+      {{else}}{{#if rutasDisponibles}}
+      <section class="fsec" id="rutas-cercanas">
+        {{> section-label n="" t="Rutas cercanas"}}
+        <p class="rempty">Sin ruta señalizada a menos de 1,5 km.</p>
+        {{#if acceso}}<p class="mut rlist__note">{{> acceso-senda}}</p>{{/if}}
+      </section>
+      {{/if}}{{/if}}
+    </div>
+
+    <aside class="ficha__side" aria-label="Datos de la ficha">
+      <div class="sheet">
+        <h2 class="sheet__t">Datos de la ficha</h2>
+        <dl class="kv">
+          <div><dt>Nº</dt><dd>{{m.id}}</dd></div>
+          {{#if m.tipologia}}<div><dt>Tipología</dt><dd>{{m.tipologia}}</dd></div>{{/if}}
+          {{#if m.tipologiaTexto}}<div><dt>Según la ficha</dt><dd>{{m.tipologiaTexto}}</dd></div>{{/if}}
+          {{#if m.municipio}}<div><dt>Municipio</dt><dd>{{m.municipio}}</dd></div>{{/if}}
+          {{#if m.hojaCartografica}}<div><dt>Hoja</dt><dd>{{m.hojaCartografica}}</dd></div>{{/if}}
+          {{#if m.altitud}}<div><dt>Altitud</dt><dd>{{m.altitud}} m</dd></div>{{/if}}
+          {{#if m.localizadoFecha}}<div><dt>Localizado</dt><dd>{{m.localizadoFechaTexto}}</dd></div>{{/if}}
+          {{#if m.localizadoAutor}}<div><dt>Por</dt><dd>{{m.localizadoAutor}}</dd></div>{{/if}}
+          {{#if m.otrosAspectos}}<div><dt>Bloque</dt><dd>{{m.otrosAspectos}}</dd></div>{{/if}}
+        </dl>
+      </div>
+
+      {{#if m.lat}}
+      <div class="sheet">
+        <h2 class="sheet__t">Coordenadas</h2>
+        <dl class="kv kv--mono">
+          {{#if m.utmX}}<div><dt>UTM X</dt><dd>{{m.utmX}}</dd></div><div><dt>UTM Y</dt><dd>{{m.utmY}}</dd></div>{{/if}}
+          <div><dt>Latitud</dt><dd>{{m.lat}}</dd></div>
+          <div><dt>Longitud</dt><dd>{{m.lon}}</dd></div>
+          {{#if m.altitud}}<div><dt>Altitud</dt><dd>{{m.altitud}} m</dd></div>{{/if}}
+        </dl>
+        <div id="locator" class="locator" data-lat="{{m.lat}}" data-lon="{{m.lon}}" data-name="{{m.nombre}}" role="img" aria-label="Mapa de situación de {{m.nombre}}"></div>
+        <p class="sheet__links">
+          <a href="{{osmUrl}}" rel="noopener" target="_blank">Ver en OpenStreetMap <span class="arr arr--ne" aria-hidden="true"></span></a>
+          <a href="{{googleUrl}}" rel="noopener" target="_blank">Ver en Google Maps <span class="arr arr--ne" aria-hidden="true"></span></a>
+        </p>
+      </div>
+      {{else}}
+      <div class="sheet">
+        <h2 class="sheet__t">Coordenadas</h2>
+        <p class="mut">Esta ficha no tiene coordenadas registradas.</p>
+      </div>
+      {{/if}}
+    </aside>
+  </div>
+
+  {{#if totalAnexos}}
+  <section class="anexos" id="anexos">
+    {{> section-label n="" t="Anexos"}}
+    <p class="mut anexos__n">{{totalAnexos}} documento{{#unless (eq totalAnexos 1)}}s{{/unless}} escaneado{{#unless (eq totalAnexos 1)}}s{{/unless}}. Pulsa una miniatura para ampliarla.</p>
+    {{#if anexos.fot.length}}{{> anexo-group titulo="Fotografías" items=anexos.fot kind="fot"}}{{/if}}
+    {{#if anexos.dib.length}}{{> anexo-group titulo="Dibujos" items=anexos.dib kind="dib"}}{{/if}}
+    {{#if anexos.map.length}}{{> anexo-group titulo="Mapas" items=anexos.map kind="map"}}{{/if}}
+    {{#if anexos.tex.length}}{{> anexo-group titulo="Textos" items=anexos.tex kind="tex"}}{{/if}}
+  </section>
+  {{/if}}
+
+  <nav class="pager" aria-label="Ficha anterior y siguiente">
+    {{#if prev}}<a class="pager__prev" href="/megalitos/{{prev.id}}" rel="prev"><span class="label"><span class="arr arr--l" aria-hidden="true"></span> Anterior · Nº {{pad4 prev.id}}</span><span class="pager__name">{{prev.nombre}}</span></a>{{else}}<span></span>{{/if}}
+    {{#if next}}<a class="pager__next" href="/megalitos/{{next.id}}" rel="next"><span class="label">Siguiente · Nº {{pad4 next.id}} <span class="arr" aria-hidden="true"></span></span><span class="pager__name">{{next.nombre}}</span></a>{{else}}<span></span>{{/if}}
+  </nav>
+</article>
+
+<dialog class="lightbox" id="lightbox" aria-label="Visor de imágenes">
+  <figure class="lightbox__fig">
+    <img class="lightbox__img" alt="">
+    <figcaption class="lightbox__cap"><span class="lightbox__count mono"></span> <span class="lightbox__alt"></span></figcaption>
+  </figure>
+  <button type="button" class="lightbox__btn lightbox__prev" aria-label="Imagen anterior"><span class="arr arr--l"></span></button>
+  <button type="button" class="lightbox__btn lightbox__next" aria-label="Imagen siguiente"><span class="arr"></span></button>
+  <button type="button" class="lightbox__btn lightbox__close" aria-label="Cerrar"><span class="arr arr--x"></span></button>
+  <a class="lightbox__open mono" href="/" target="_blank" rel="noopener">Abrir original <span class="arr arr--ne" aria-hidden="true"></span></a>
+</dialog>
+<script src="/vendor/leaflet/leaflet.js"></script>
+<script src="/js/map.js?v={{@root.assetV}}"></script>

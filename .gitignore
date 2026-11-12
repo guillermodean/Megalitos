@@ -1,4 +1,5 @@
-node_modules
-Docs
-src\public\img\141208_Megalitos
-src/keys.js
+node_modules/
+.env
+*.log
+data/
+.thumbs/

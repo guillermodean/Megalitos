@@ -1,0 +1,65 @@
+# Production (homelab). Lives in ~/dockers/megalitos/ (clone of the repo).
+# Public hostname: megalitosnavarra.guillermodean.com (Cloudflare tunnel -> host port 8050).
+services:
+  megalitos:
+    container_name: megalitos
+    build: .
+    image: megalitos-navarra:latest
+    restart: always
+    ports:
+      - "8050:8000"
+    # Do NOT use env_file here: it would hand MARIADB_ROOT_PASSWORD to the web process.
+    # Compose interpolates these from .env (same directory).
+    environment:
+      NODE_ENV: production
+      PORT: "8000"
+      # Only Docker-bridge peers (cloudflared) may set X-Forwarded-For; LAN clients cannot.
+      TRUST_PROXY: "loopback, 172.16.0.0/12"
+      DB_HOST: ${DB_HOST:?set DB_HOST in .env}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_NAME: ${DB_NAME:-megalitos}
+      DB_USER: ${DB_USER:?set DB_USER in .env}
+      DB_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-300}
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    logging: &log
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+    volumes:
+      - ./data/anexos:/data/anexos:ro
+      - ./data/thumbs:/data/thumbs:ro
+    depends_on:
+      megalitos-db:
+        condition: service_healthy
+    networks: [backend, frontend]
+
+  megalitos-db:
+    container_name: megalitos-db
+    image: mariadb:11.4
+    restart: always
+    env_file: .env
+    mem_limit: 512m
+    logging: *log
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks: [backend]
+
+networks:
+  backend:
+    internal: true
+  frontend: {}

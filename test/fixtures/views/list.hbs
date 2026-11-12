@@ -1,0 +1,4 @@
+<h1>list</h1><p id="total">{{total}}</p><p id="q">{{q}}</p>
+{{#each items}}<a class="card" href="/megalitos/{{id}}">{{nombre}}</a>{{/each}}
+{{#each tipologias}}<option value="{{slug}}" {{#if selected}}selected{{/if}}>{{nombre}}</option>{{/each}}
+{{#each municipios}}<option {{#if selected}}selected{{/if}}>{{nombre}}</option>{{/each}}

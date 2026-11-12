@@ -1,0 +1,4 @@
+<h1>rutas</h1><p id="total">{{total}}</p><p id="disp">{{disponible}}</p><p id="q">{{q}}</p><p id="red">{{red}}</p>
+{{#each items}}<a class="ruta" href="/rutas/{{id}}">{{ref}}|{{nombre}}|{{redNombre}}|{{longitudKm}}|{{nMegalitos}}</a>{{/each}}
+{{#each redes}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{nombre}}</option>{{/each}}
+<p id="act">{{meta.actualizado}}</p>

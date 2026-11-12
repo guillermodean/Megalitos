@@ -1,0 +1,58 @@
+<section class="wrap section list">
+  <header class="list__head">
+    <p class="label">Catálogo</p>
+    <h1 class="display display--m">Megalitos de Navarra</h1>
+  </header>
+
+  <form class="filters" method="get" action="/megalitos" role="search" id="filters">
+    <div class="field field--q">
+      <label for="f-q">Buscar</label>
+      <input id="f-q" name="q" type="search" value="{{q}}" placeholder="nombre, municipio, descripción…" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="f-tipo">Tipología</label>
+      <select id="f-tipo" name="tipo">
+        <option value="">Todas</option>
+        {{#each tipologias}}<option value="{{slug}}"{{#if selected}} selected{{/if}}>{{nombre}}</option>{{/each}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-muni">Municipio</label>
+      <select id="f-muni" name="municipio">
+        <option value="">Todos</option>
+        {{#each municipios}}<option value="{{nombre}}"{{#if selected}} selected{{/if}}>{{nombre}}</option>{{/each}}
+      </select>
+    </div>
+    <div class="field field--go">
+      <button class="btn btn--acc" type="submit">Filtrar</button>
+      <a class="btn btn--ghost" href="/megalitos">Limpiar</a>
+    </div>
+  </form>
+
+  <p class="list__count" aria-live="polite"><span id="list-count" data-total="{{total}}">{{fmtNum total}}</span> ficha{{#unless (eq total 1)}}s{{/unless}}{{#if q}} · «{{q}}»{{/if}}</p>
+
+  {{#if items.length}}
+  <div class="tablewrap">
+    <table class="cat" id="cat">
+      <thead>
+        <tr><th scope="col" class="c-img"><span class="visually-hidden">Imagen</span></th><th scope="col" class="c-no">Nº</th><th scope="col">Nombre</th><th scope="col">Tipología</th><th scope="col">Municipio</th><th scope="col" class="c-alt">Alt.</th></tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td class="c-img">{{#if thumb}}<a href="/megalitos/{{id}}" tabindex="-1" aria-hidden="true"><img src="{{thumb}}" alt="" loading="lazy" width="56" height="42"></a>{{else}}<span class="c-none"></span>{{/if}}</td>
+          <td class="c-no mono">{{pad4 id}}</td>
+          <th scope="row" class="c-name"><a href="/megalitos/{{id}}">{{nombre}}</a></th>
+          <td class="c-tipo">{{tipologia}}</td>
+          <td class="c-muni">{{municipio}}</td>
+          <td class="c-alt mono">{{#if altitud}}{{altitud}} m{{/if}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <p class="list__empty" id="list-empty" hidden>Ninguna ficha coincide con la búsqueda.</p>
+  {{else}}
+  <p class="list__empty">Ninguna ficha coincide con la búsqueda. <a href="/megalitos">Ver todas</a>.</p>
+  {{/if}}
+</section>

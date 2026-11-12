@@ -1,0 +1,10 @@
+<article class="card">
+  <a class="card__link" href="/megalitos/{{id}}">
+    <div class="card__img">
+      {{#if thumb}}<img src="{{thumb}}" alt="" loading="lazy" width="480" height="360">{{else}}<span class="card__none">sin imagen</span>{{/if}}
+    </div>
+    <p class="card__no">Nº {{pad4 id}}</p>
+    <h3 class="card__name">{{nombre}}</h3>
+    <p class="card__meta">{{#if tipologia}}{{tipologia}}{{/if}}{{#if municipio}} · {{municipio}}{{/if}}{{#if altitud}} · {{altitud}} m{{/if}}</p>
+  </a>
+</article>

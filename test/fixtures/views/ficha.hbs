@@ -1,0 +1,6 @@
+<h1>{{m.nombre}}</h1><div id="desc">{{nl2p m.descripcion}}</div><p id="tip">{{m.tipologia}}</p>
+<p id="n">{{totalAnexos}}</p>{{#each anexos.fot}}<img src="{{src}}" data-thumb="{{thumb}}" alt="{{alt}}">{{/each}}
+{{#if prev}}<a id="prev" href="/megalitos/{{prev.id}}">{{prev.nombre}}</a>{{/if}}{{#if next}}<a id="next" href="/megalitos/{{next.id}}">{{next.nombre}}</a>{{/if}}
+{{#if osmUrl}}<a id="osm" href="{{osmUrl}}">osm</a>{{/if}}
+
+<p id="rd">{{rutasDisponibles}}</p><p id="nr">{{rutas.length}}</p>{{#each rutas}}<a class="r" href="/rutas/{{id}}">{{distM}}</a>{{/each}}<p id="ac">{{acceso.sendaDistM}}</p>
